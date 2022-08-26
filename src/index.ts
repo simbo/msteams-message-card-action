@@ -46,10 +46,12 @@ try {
     }, [] as Button[]);
 
   const payload = {
-    themeColor: color,
-    title: title,
-    text: message,
-    potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
+    // '@context': 'https://schema.org/extensions',
+    // '@type': 'MessageCard',
+    // themeColor: color,
+    // title: title,
+    // text: message,
+    // potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
   };
 
   startGroup('Payload to send');
