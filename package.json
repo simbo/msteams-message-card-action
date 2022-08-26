@@ -21,18 +21,24 @@
   "bugs": {
     "url": "https://github.com/simbo/msteams-message-card-action/issues"
   },
+  "private": true,
   "engines": {
     "node": "^16"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && ncc build src/index.ts --license licenses.txt --minify --out dist --target es2021",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@actions/core": "^1.9.1",
     "node-fetch": "^3.2.10"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "@types/node": "^16.11.56",
+    "@vercel/ncc": "^0.34.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
   }
 }
