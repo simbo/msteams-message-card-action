@@ -1,4 +1,4 @@
-import { getInput, setFailed, debug, InputOptions } from '@actions/core';
+import { getInput, setFailed, InputOptions, info } from '@actions/core';
 import fetch from 'node-fetch';
 
 interface Button {
@@ -36,13 +36,21 @@ try {
     potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
   };
 
-  debug(`Payload to send:\n${JSON.stringify(payload, null, 2)}`);
+  info(`Payload to send:\n${JSON.stringify(payload, null, 2)}`);
 
   fetch(webhook, {
     method: 'post',
     body: JSON.stringify(payload),
     headers: { 'Content-Type': 'application/json' }
-  }).catch((error: any) => setFailed(error.message));
+  })
+    .then(response => {
+      if (response.ok) {
+        info('Successfully sent!');
+      } else {
+        setFailed(`Sending failed: STATUS ${response.status} ${response.statusText}`);
+      }
+    })
+    .catch((error: any) => setFailed(error.message));
 } catch (error: any) {
   setFailed(error.message);
 }
