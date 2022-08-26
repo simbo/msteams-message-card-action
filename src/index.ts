@@ -13,7 +13,7 @@ function formatJson(json: any): string {
 async function sendPayload(webhook: string, payload: any): Promise<void> {
   const response = await fetch(webhook, {
     method: 'post',
-    body: JSON.stringify(payload).substring(0, 10),
+    body: JSON.stringify(payload),
     headers: { 'Content-Type': 'application/json' }
   });
   if (response.ok) {
@@ -47,7 +47,7 @@ try {
 
   const payload = {
     '@context': 'https://schema.org/extensions',
-    '@type': 'MessageCard',
+    '@type': 'MessageCCCCCard',
     themeColor: color,
     title: title,
     text: message,
