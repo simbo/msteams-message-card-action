@@ -1,0 +1,26 @@
+name: 'MS Teams Message Card'
+description: 'A simple GitHub action to send notifications as message cards to an MS Teams webhook by using the actionable message card JSON format.'
+inputs:
+  webhook:
+    description: The MS Teams webhook URL to send the notification to. Obviously required.
+    required: true
+    default: ''
+  title:
+    description: The title of your card. Will be omitted by MS Teams if left empty.
+    required: false
+    default: ''
+  message:
+    description: The message content. Supports HTML up to a certain level (interpreted by MS Teams). Can also be empty.
+    required: false
+    default: ''
+  color:
+    description: The border color of the message card. Will fallback to MS Teams' default color if empty.
+    required: false
+    default: ''
+  buttons:
+    description: A multiline string where every line defines an action button for the message card. Each line should contain a label text followed by a HTTP(S) URL. If the line does not match this format, it will be silently omitted.
+    required: false
+    default: ''
+runs:
+  using: 'node16'
+  main: 'index.js'

@@ -1,0 +1,38 @@
+{
+  "name": "msteams-message-card-action",
+  "version": "0.1.0",
+  "description": "A simple GitHub action to send notifications as message cards to an MS Teams webhook by using the actionable message card JSON format.",
+  "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "action",
+    "msteams",
+    "teams",
+    "message",
+    "card",
+    "notification"
+  ],
+  "homepage": "https://github.com/simbo/msteams-message-card-action#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simbo/msteams-message-card-action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/simbo/msteams-message-card-action/issues"
+  },
+  "engines": {
+    "node": "^16"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "node-fetch": "^3.2.10"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}

@@ -1,0 +1,39 @@
+name: Test notifications
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📣 Send teams notification
+        uses: simbo/msteams-message-card-action@main
+        with:
+          webhook: ${{ secrets.TEAMS_WEBHOOK }}
+          message: Hello world!
+
+      - name: 🪣 Set env vars
+        if: ${{ always() }}
+        run: |
+          echo "MY_SPECIAL_BUTTON=Cool https://this-is-so.cool/" >> $GITHUB_ENV
+
+      - name: 📣 Send teams notification
+        if: ${{ always() }}
+        uses: simbo/msteams-message-card-action@main
+        env:
+          MY_AWESOME_BUTTON: Awesome http://this-is-so.awesome/
+        with:
+          webhook: ${{ secrets.TEAMS_WEBHOOK }}
+          title: Hello world!
+          message: <p>This is my <strong>awesome message!</strong></p>
+          color: ff69b4
+          buttons: |
+            Click here! https://whatever.com/foo/
+            Or here… https://somewhere.com/bar/
+            This button will not be shown as it has no target URL
+            https://no-label-no-button.com/
+            ${{ env.MY_SPECIAL_BUTTON }}
+            ${{ env.MY_AWESOME_BUTTON }}
