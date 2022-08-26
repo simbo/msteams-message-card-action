@@ -1,13 +1,12 @@
-# msteams-message-card-action
+# simbo/msteams-message-card-action
 
-## About
-
-A simple GitHub action to send notifications as message cards to an MS Teams
-webhook by using the [actionable message card JSON format](https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference).
+A simple and lightning-fast GitHub action to send notifications as message cards
+to an MS Teams webhook by using the [actionable message card JSON format](https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference).
 
 It does not add any custom design. That's all up to you.
 
-You can add buttons by using simple strings with labels followed by URLs.  
+You can add buttons by using simple strings with labels followed by URLs (see
+[Options](#options)).  
 I decided for this simple format to define buttons because this way you can
 easily set buttons using workflow variables which can also be invalid and
 omitted on purpose.

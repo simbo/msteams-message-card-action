@@ -2,7 +2,7 @@ name: MS Teams Message Card
 branding:
   icon: message-square
   color: blue
-description: 'A simple GitHub action to send notifications as message cards to an MS Teams webhook.'
+description: 'A simple and lightning-fast GitHub action to send notifications as message cards to an MS Teams webhook.'
 inputs:
   webhook:
     description: The MS Teams webhook URL to send the notification to. Obviously required.
