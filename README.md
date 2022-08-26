@@ -14,7 +14,7 @@ omitted on purpose.
 
 ## Usage
 
-Add `simbo/msteams-message-card-action@v0` to your workflow.
+Add `simbo/msteams-message-card-action@v1` to your workflow.
 
 ### Simple Example
 
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📣 Send teams notification
-        uses: simbo/msteams-message-card-action@v0
+        uses: simbo/msteams-message-card-action@v1
         with:
           webhook: ${{ secrets.TEAMS_WEBHOOK }}
           message: Hello world!
@@ -46,7 +46,7 @@ jobs:
           echo "MY_SPECIAL_BUTTON=Cool https://this-is-so.cool/" >> $GITHUB_ENV
 
       - name: 📣 Send teams notification
-        uses: simbo/msteams-message-card-action@v0
+        uses: simbo/msteams-message-card-action@v1
         env:
           MY_AWESOME_BUTTON: Awesome http://this-is-so.awesome/
         with:
