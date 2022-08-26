@@ -3,7 +3,7 @@ name: Test notifications
 on:
   push:
     branches:
-      - main
+      - test
 
 jobs:
   notify:
