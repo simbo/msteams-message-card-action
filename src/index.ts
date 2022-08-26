@@ -1,4 +1,4 @@
-import { getInput, setFailed, InputOptions, info } from '@actions/core';
+import { getInput, setFailed, InputOptions, info, startGroup, endGroup } from '@actions/core';
 import fetch from 'node-fetch';
 
 interface Button {
@@ -36,7 +36,9 @@ try {
     potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
   };
 
-  info(`Payload to send:\n${JSON.stringify(payload, null, 2)}`);
+  startGroup('Payload to send');
+  info(JSON.stringify(payload, null, 2));
+  endGroup();
 
   fetch(webhook, {
     method: 'post',
