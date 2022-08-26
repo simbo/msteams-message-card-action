@@ -46,8 +46,6 @@ try {
     }, [] as Button[]);
 
   const payload = {
-    '@context': 'https://schema.org/extensions',
-    '@type': 'MessageCCCCCard',
     themeColor: color,
     title: title,
     text: message,
