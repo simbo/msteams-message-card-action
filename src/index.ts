@@ -17,7 +17,7 @@ async function sendPayload(webhook: string, payload: any): Promise<void> {
     headers: { 'Content-Type': 'application/json' }
   });
   if (response.ok) {
-    info('Successfully sent!');
+    info('\n✅ Success!');
   } else {
     const json = await response.json();
     setFailed(`Sending failed:\nResponse Status ${response.status} ${response.statusText}\n${formatJson(json)}`);
@@ -46,12 +46,12 @@ try {
     }, [] as Button[]);
 
   const payload = {
-    // '@context': 'https://schema.org/extensions',
-    // '@type': 'MessageCard',
-    // themeColor: color,
-    // title: title,
-    // text: message,
-    // potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
+    '@context': 'https://schema.org/extensions',
+    '@type': 'MessageCard',
+    themeColor: color,
+    title: title,
+    text: message,
+    potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
   };
 
   startGroup('Payload to send');
