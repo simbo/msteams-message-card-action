@@ -6,25 +6,11 @@ interface Button {
   uri: string;
 }
 
-function formatJson(json: any): string {
+function readableJson(json: any): string {
   return JSON.stringify(json, null, 2);
 }
 
-async function sendPayload(webhook: string, payload: any): Promise<void> {
-  const response = await fetch(webhook, {
-    method: 'post',
-    body: JSON.stringify(payload),
-    headers: { 'Content-Type': 'application/json' }
-  });
-  if (response.ok) {
-    info('\n✅ Success!');
-  } else {
-    const json = await response.json();
-    setFailed(`Sending failed:\nResponse Status ${response.status} ${response.statusText}\n${formatJson(json)}`);
-  }
-}
-
-try {
+async function action(): Promise<void> {
   const inputOptions: InputOptions = { trimWhitespace: true };
   const webhook = getInput('webhook', { ...inputOptions, required: true });
   const title = getInput('title', inputOptions);
@@ -55,10 +41,20 @@ try {
   };
 
   startGroup('Payload to send');
-  info(formatJson(payload));
+  info(readableJson(payload));
   endGroup();
 
-  sendPayload(webhook, payload).catch((error: any) => setFailed(error.message));
-} catch (error: any) {
-  setFailed(error.message);
+  const response = await fetch(webhook, {
+    method: 'post',
+    body: JSON.stringify(payload),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    info('\n✅ Success!');
+  } else {
+    const json = await response.json();
+    setFailed(`Sending failed:\nResponse Status ${response.status} ${response.statusText}\n${readableJson(json)}`);
+  }
 }
+
+action().catch(error => setFailed(error));
