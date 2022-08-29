@@ -76,6 +76,20 @@ jobs:
 | `color`   | no       | `''`    | The border color of the message card. Will fallback to MS Teams' default color if empty.                                                                                                                                 |
 | `buttons` | no       | `''`    | A multiline string where every line defines an action button for the message card. Each line should contain a label text followed by a HTTP(S) URL. If the line does not match this format, it will be silently omitted. |
 
+## Development
+
+### Creating a new Version
+
+Use `./release <major|minor|patch>` which will update `package.json` and create
+a git tag for the respective version.
+
+A release workflow will pick up the tag when pushed to GitHub, create a release
+and move major, minor and latest tags accordingly.
+
+To publish the release into the GitHub marketplace open
+[releases](https://github.com/simbo/msteams-message-card-action/releases) and
+update the release for marketplace publishing.
+
 ## License and Author
 
 [MIT &copy; Simon Lepel](http://simbo.mit-license.org/)
