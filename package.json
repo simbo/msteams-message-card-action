@@ -31,14 +31,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@actions/core": "^1.9.1",
-    "node-fetch": "^3.2.10"
+    "@actions/core": "^1.10.0",
+    "node-fetch": "^3.3.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.56",
-    "@vercel/ncc": "^0.34.0",
-    "husky": "^8.0.1",
-    "prettier": "^2.7.1",
-    "typescript": "^4.8.2"
+    "@types/node": "^16",
+    "@vercel/ncc": "^0.36.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
   }
 }
