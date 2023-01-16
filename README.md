@@ -109,7 +109,7 @@ jobs:
 
 …will produce a message card like this:
 
-![advanced example output](./example-advanced.png)
+![advanced example output](./example-sections.png)
 
 ## Options
 
