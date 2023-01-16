@@ -1,4 +1,5 @@
 import { getInput, setFailed, InputOptions, info, startGroup, endGroup } from '@actions/core';
+import { parse as parseYaml } from 'yaml';
 import fetch from 'node-fetch';
 
 interface Button {
@@ -30,6 +31,10 @@ async function action(): Promise<void> {
       }
       return btns;
     }, [] as Button[]);
+
+  const sections = parseYaml(getInput('sections', inputOptions));
+
+  console.log(sections);
 
   const payload = {
     '@context': 'https://schema.org/extensions',

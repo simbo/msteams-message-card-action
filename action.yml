@@ -24,6 +24,10 @@ inputs:
     description: A multiline string where every line defines an action button for the message card. Each line should contain a label text followed by a HTTP(S) URL. If the line does not match this format, it will be silently omitted.
     required: false
     default: ''
+  sections:
+    description: A section object in YAML format
+    required: false
+    default: ''
 runs:
   using: node16
   main: dist/index.js
