@@ -42,7 +42,8 @@ async function action(): Promise<void> {
     themeColor: color,
     title: title,
     text: message,
-    potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] }))
+    potentialAction: buttons.map(({ name, uri }) => ({ '@type': 'OpenUri', name, targets: [{ os: 'default', uri }] })),
+    sections: Array.isArray(sections) ? sections : []
   };
 
   startGroup('Payload to send');
