@@ -17,6 +17,7 @@ async function action(): Promise<void> {
   const title = getInput('title', inputOptions);
   const message = getInput('message', inputOptions);
   const color = getInput('color', inputOptions);
+
   const buttons: Button[] = getInput('buttons', inputOptions)
     .split('\n')
     .reduce((btns, line) => {
@@ -33,8 +34,6 @@ async function action(): Promise<void> {
     }, [] as Button[]);
 
   const sections = parseYaml(getInput('sections', inputOptions));
-
-  console.log(sections);
 
   const payload = {
     '@context': 'https://schema.org/extensions',
