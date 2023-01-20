@@ -14,7 +14,7 @@ inputs:
     default: ''
   message:
     description: The message content. Supports HTML up to a certain level (interpreted by MS Teams). Can also be empty.
-    required: false
+    required: true
     default: ''
   color:
     description: The border color of the message card. Will fallback to MS Teams' default color if empty.
