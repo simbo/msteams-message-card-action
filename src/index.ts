@@ -7,10 +7,6 @@ interface Button {
   uri: string;
 }
 
-function readableJson(json: any): string {
-  return JSON.stringify(json, null, 2);
-}
-
 async function action(): Promise<void> {
   const inputOptions: InputOptions = { trimWhitespace: true };
   const webhook = getInput('webhook', { ...inputOptions, required: true });
@@ -46,7 +42,7 @@ async function action(): Promise<void> {
   };
 
   startGroup('Payload to send');
-  info(readableJson(payload));
+  info(JSON.stringify(payload, null, 2));
   endGroup();
 
   const response = await fetch(webhook, {
@@ -57,8 +53,7 @@ async function action(): Promise<void> {
   if (response.ok) {
     info('\n✅ Success!');
   } else {
-    const json = await response.json();
-    setFailed(`Sending failed:\nResponse Status ${response.status} ${response.statusText}\n${readableJson(json)}`);
+    setFailed(`Sending failed:\nResponse Status ${response.status} ${response.statusText}\n${await response.text()}`);
   }
 }
 
