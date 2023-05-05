@@ -1,6 +1,6 @@
 {
   "name": "msteams-message-card-action",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A simple and lightning-fast GitHub action to send notifications as message cards to an MS Teams webhook by using the actionable message card JSON format.",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
