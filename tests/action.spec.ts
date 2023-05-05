@@ -27,6 +27,12 @@ describe('Action', () => {
         case 'message': {
           return 'Hello World!';
         }
+        case 'title': {
+          return 'Hiho!';
+        }
+        case 'color': {
+          return 'red';
+        }
         default: {
           return '';
         }
@@ -35,10 +41,10 @@ describe('Action', () => {
     await expect(action()).resolves.not.toThrow();
     expect(createMessageCardPayload).toHaveBeenCalledWith({
       buttons: [],
-      color: '',
       sections: [],
       text: 'Hello World!',
-      title: ''
+      title: 'Hiho!',
+      color: 'red'
     });
     expect(sendMessageCard).toHaveBeenCalledWith({ payload: { fake: true }, webhookURL: 'https://my-webhook.com/' });
   });
@@ -65,10 +71,8 @@ describe('Action', () => {
     await expect(action()).resolves.not.toThrow();
     expect(createMessageCardPayload).toHaveBeenCalledWith({
       buttons: [{ label: 'foo', url: 'http://foo.com/' }],
-      color: '',
       sections: [],
-      text: 'Hello World!',
-      title: ''
+      text: 'Hello World!'
     });
     expect(sendMessageCard).toHaveBeenCalledWith({ payload: { fake: true }, webhookURL: 'https://my-webhook.com/' });
   });
@@ -95,10 +99,8 @@ describe('Action', () => {
     await expect(action()).resolves.not.toThrow();
     expect(createMessageCardPayload).toHaveBeenCalledWith({
       buttons: [],
-      color: '',
       sections: [{ facts: [{ name: 'foo', value: 'bar' }] }],
-      text: 'Hello World!',
-      title: ''
+      text: 'Hello World!'
     });
     expect(sendMessageCard).toHaveBeenCalledWith({ payload: { fake: true }, webhookURL: 'https://my-webhook.com/' });
   });

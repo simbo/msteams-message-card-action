@@ -1,5 +1,5 @@
 import { endGroup, getInput, info, InputOptions, startGroup } from '@actions/core';
-import { createMessageCardPayload, OptionsButton, sendMessageCard } from 'msteams-message-cards';
+import { createMessageCardPayload, OptionsButton, PayloadOptions, sendMessageCard } from 'msteams-message-cards';
 import { parse as parseYaml } from 'yaml';
 
 export async function action() {
@@ -26,13 +26,24 @@ export async function action() {
 
   const sections = parseYaml(getInput('sections', inputOptions));
 
-  const payload = createMessageCardPayload({
-    color: color,
-    title: title,
-    text: message,
+  const payloadOptions: PayloadOptions = {
     buttons,
     sections: Array.isArray(sections) ? sections : []
-  });
+  };
+
+  if (typeof title === 'string' && title.length > 0) {
+    payloadOptions.title = title;
+  }
+
+  if (typeof color === 'string' && color.length > 0) {
+    payloadOptions.color = color;
+  }
+
+  if (typeof message === 'string' && message.length > 0) {
+    payloadOptions.text = message;
+  }
+
+  const payload = createMessageCardPayload(payloadOptions);
 
   startGroup('Payload to send');
   info(JSON.stringify(payload, undefined, 2));
