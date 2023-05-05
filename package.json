@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "msteams-message-cards": "^1.0.0",
+    "msteams-message-cards": "^1.0.1",
     "yaml": "^2.2.2"
   },
   "devDependencies": {
