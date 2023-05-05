@@ -1,7 +1,8 @@
 # simbo/msteams-message-card-action
 
 A simple and lightning-fast GitHub action to send notifications as message cards
-to an MS Teams webhook by using the [actionable message card JSON format](https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference).
+to an MS Teams webhook by using the
+[actionable message card JSON format](https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference).
 
 It does not add any custom design. That's all up to you.
 
@@ -11,7 +12,8 @@ I decided for this simple format to define buttons because this way you can
 easily set buttons using workflow variables which can also be invalid and
 omitted on purpose.
 
-You can also define complete sections in YAML format following the [section fields definition](https://learn.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#section-fields)
+You can also define complete sections in YAML format following the
+[section fields definition](https://learn.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#section-fields)
 for actionable message cards.
 
 ## Usage
@@ -118,7 +120,7 @@ jobs:
 | `webhook`  | yes      | `''`    | The MS Teams webhook URL to send the notification to. Obviously required.                                                                                                                                                |
 | `message`  | yes      | `''`    | The message content. Supports HTML up to a certain level (interpreted by MS Teams). Can also be empty.                                                                                                                   |
 | `title`    | no       | `''`    | The title of your card. Will be omitted by MS Teams if left empty.                                                                                                                                                       |
-| `color`    | no       | `''`    | The border color of the message card. Will fallback to MS Teams' default color if empty.                                                                                                                                 |
+| `color`    | no       | `''`    | The border color code of name of the message card (parsed by [`color-name-to-code`](https://www.npmjs.com/package/color-name-to-code)). Will fallback to MS Teams' default color if empty.                               |
 | `buttons`  | no       | `''`    | A multiline string where every line defines an action button for the message card. Each line should contain a label text followed by a HTTP(S) URL. If the line does not match this format, it will be silently omitted. |
 | `sections` | no       | `''`    | A multline string representing a YAML definition of [section objects](https://learn.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#section-fields)                                               |
 

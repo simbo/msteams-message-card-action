@@ -1,6 +1,23 @@
 {
   "trailingComma": "none",
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^src/", "^\\.\\.(/|$)", "^\\.(/|$)"],
+  "importOrderBuiltinModulesToTop": true,
+  "importOrderCaseInsensitive": true,
+  "importOrderCombineTypeAndValueImports": true,
+  "importOrderMergeDuplicateImports": true,
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
   "singleQuote": true,
   "arrowParens": "avoid",
-  "printWidth": 120
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 80,
+        "proseWrap": "always"
+      }
+    }
+  ]
 }
